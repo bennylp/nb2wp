@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+
+<html style="font-family: sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%">
+<body style="margin: 0">
+<div tabindex="-1">
+<div>
+<div><div>
+</div>
+<div>
+<div>
+<h1 style="font-size: 2em; margin: 0.67em 0">nb2wp - Convert Jupyter Notebook to Wordpress.com HTML<a href="#nb2wp---Convert-Jupyter-Notebook-to-Wordpress.com-HTML" style="background-color: transparent"></a></h1><p>This <code style="font-family: monospace, monospace; font-size: 1em">np2wp</code> utility converts Jupyter notebooks to plain HTML suitable for Wordpress.com. Note the difference between <strong style="font-weight: bold">Wordpress.com</strong> service and Wordpress.org platform. The Wordpress.com service is much stricter.</p>
+<p>We will use this <code style="font-family: monospace, monospace; font-size: 1em">Readme.ipynb</code> notebook to explain the utility as well we demonstrate the conversion features. We will convert this notebook to HTML at the end of the notebook.</p>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h1 style="font-size: 2em; margin: 0.67em 0">General Guides<a href="#General-Guides" style="background-color: transparent"></a></h1>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h2>Installation<a href="#Installation" style="background-color: transparent"></a></h2><p>For conversion, two files are needed: <code style="font-family: monospace, monospace; font-size: 1em">nb2wp.py</code> and <code style="font-family: monospace, monospace; font-size: 1em">styles.css</code>.</p>
+<p>For running this notebook, <code style="font-family: monospace, monospace; font-size: 1em">carrot.png</code> is also needed (or otherwise it's easier to just download the whole repository).</p>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h2>Running<a href="#Running" style="background-color: transparent"></a></h2><p>Import and call from your program.</p>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>In [1]:</div>
+<div>
+<div>
+<div style="background: #f8f8f8"><pre style="overflow: auto; font-family: monospace, monospace; font-size: 1em"><span></span><span style="color: #666">%</span><span style="color: #008000; font-weight: bold">load_ext</span> autoreload
+<span style="color: #666">%</span><span style="color: #008000; font-weight: bold">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>In [24]:</div>
+<div>
+<div>
+<div style="background: #f8f8f8"><pre style="overflow: auto; font-family: monospace, monospace; font-size: 1em"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #00F; font-weight: bold">nb2wp</span> <span style="color: #008000; font-weight: bold">import</span> <span>nb2wp</span>
+
+<span>help</span><span>(</span><span>nb2wp</span><span>)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div></div>
+<div>
+<pre style="overflow: auto; font-family: monospace, monospace; font-size: 1em">Help on function nb2wp in module nb2wp:
+
+nb2wp(nbfile, out_dir='', template='full', css_file='style.css', save_img=True, img_dir='img', img_url_prefix='img', latex='wp', remove_attrs=True, save_css=False, save_html=False, quiet=False)
+    Convert Jupyter notebook file to Wordpress.com HTML.
+    
+    Parameters:
+    nbfile:     The Jupyter notebook file
+    out_dir:    Specify output directory. If empty,  a directory  with the same
+                name as the notebook file will be created.
+    template:   (Optional) nbconvert template file. The default is "full".  You
+                may specify standard nbconvert template names such as "full" or
+                "basic", or the path of custom nbconvert .TPL file.
+    css_file:   Specify CSS file. Default is 'style.css'. If not specified, the
+                CSS provided by nbconvert will be used.
+    save_img:   Save  inline images  to  external  image files.  Default:  True.
+                Setting this  to False  will cause failure in loading the image
+                because Wordpress.com disallows "data:" URI.
+    img_dir:    The local directory to save images. The path may be relative or
+                absolute. If relative, the directory will be under out_dir. 
+                Default: "img". 
+    img_url_prefix: The  root/parent directory of the images as seen from HTTP.
+    latex:      Specify how to convert  Latex directives.  Default is "wp".  If
+                empty,  no Latex conversion  will be performed  (the directives
+                will be left unchanged).
+    remove_attrs: Remove various HTML attributes such as "class", "id" from the
+                output HTML file to simplify the file. Default: True 
+    save_css:   Save  the CSS  that is used to 'style.css' file in out_dir, for
+                debugging. Default: False
+    save_html:  Save  the HTML  before it is  processed to 'input.html' file in
+                out_dir, for debugging. Default: False
+    quiet:      No output to stdout if true. Default: False
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h3>Running with Default Values for Self Hosted Webserver<a href="#Running-with-Default-Values-for-Self-Hosted-Webserver" style="background-color: transparent"></a></h3><p>Note: the <code style="font-family: monospace, monospace; font-size: 1em">out_dir</code> parameter is optional and can be omitted. It is provided here to save outputs in different directories for demonstration purposes.</p>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>In [25]:</div>
+<div>
+<div>
+<div style="background: #f8f8f8"><pre style="overflow: auto; font-family: monospace, monospace; font-size: 1em"><span></span><span>nb2wp</span><span>(</span><span style="color: #BA2121">'Readme.ipynb'</span><span>,</span> <span>out_dir</span><span style="color: #666">=</span><span style="color: #BA2121">'out/demo1'</span><span>)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div></div>
+<div>
+<pre style="overflow: auto; font-family: monospace, monospace; font-size: 1em">Using template: full
+Using CSS file style.css
+out/demo1\Readme.html: 28116 bytes written in 2.019s
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<p>If you're reading this in Jupyter or on GitHub, you can open <a href="out/demo1/Readme.html" style="background-color: transparent">out/demo1/Readme.html</a> to see how the output looks like.</p>
+<p>The output should be okay (bearing in mind that if you just restarted the kernel and cleared the output then the subsequent code cells will be empty):</p>
+<ul>
+<li>the general Markdown conversion should work</li>
+<li>syntax coloring should work</li>
+<li>images should work</li>
+<li>Latex formulas will be broken (since the syntax is targeted for Wordpress)</li>
+</ul>
+<p>You cannot copy/paste the HTML to Wordpress.com yet because that will break local and Matplotlib images, because the images <code style="font-family: monospace, monospace; font-size: 1em">src</code> URLs are set to relative path <code style="font-family: monospace, monospace; font-size: 1em">img</code>.</p>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h3>Generating Wordpress HTML<a href="#Generating-Wordpress-HTML" style="background-color: transparent"></a></h3>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>In [26]:</div>
+<div>
+<div>
+<div style="background: #f8f8f8"><pre style="overflow: auto; font-family: monospace, monospace; font-size: 1em"><span></span><span>nb2wp</span><span>(</span><span style="color: #BA2121">'Readme.ipynb'</span><span>,</span> <span>out_dir</span><span style="color: #666">=</span><span style="color: #BA2121">'out/demo2'</span><span>,</span> 
+      <span>img_url_prefix</span><span style="color: #666">=</span><span style="color: #BA2121">'https://raw.githubusercontent.com/bennylp/nb2wp/master/out/demo2/img'</span><span>)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div></div>
+<div>
+<pre style="overflow: auto; font-family: monospace, monospace; font-size: 1em">Using template: full
+Using CSS file style.css
+out/demo2\Readme.html: 28246 bytes written in 2.078s
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<p>If you're reading this in Jupyter or GitHub, you can open <a href="out/demo2/Readme.html" style="background-color: transparent">out/demo2/Readme.html</a> to see how the output looks like.</p>
+<p>The idea here is to place the image files on GitHub and reference them from Wordpress. This is the easiest for my use case because my work is public and thus I can place the files publicly on git/GitHub along with the original notebook.</p>
+<p>If you want to serve the image files from elsewhere, you need to copy the images from <code style="font-family: monospace, monospace; font-size: 1em">out_dir/img</code> directory and call with <code style="font-family: monospace, monospace; font-size: 1em">img_url_prefix</code> parameter set accordingly.</p>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h1 style="font-size: 2em; margin: 0.67em 0">That's All<a href="#That's-All" style="background-color: transparent"></a></h1><p>Yup, that's all. The rest of the notebook is to demonstrate various notebook features that can be converted by the utility.</p>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h1 style="font-size: 2em; margin: 0.67em 0">Markdown Conversions<a href="#Markdown-Conversions" style="background-color: transparent"></a></h1><p>All markdown features should be converted fine. These are some Markdown demos from <a href="https://markdown-it.github.io/" style="background-color: transparent">https://markdown-it.github.io/</a>.</p>
+<h2>h2 Heading<a href="#h2-Heading" style="background-color: transparent"></a></h2><h3>h3 Heading<a href="#h3-Heading" style="background-color: transparent"></a></h3><h4>h4 Heading<a href="#h4-Heading" style="background-color: transparent"></a></h4><h5>h5 Heading<a href="#h5-Heading" style="background-color: transparent"></a></h5><h6>h6 Heading<a href="#h6-Heading" style="background-color: transparent"></a></h6>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h2>Horizontal Rules<a href="#Horizontal-Rules" style="background-color: transparent"></a></h2><p>Various ways to create horizontal lines:</p>
+<hr style="box-sizing: content-box; height: 0"/>
+<hr style="box-sizing: content-box; height: 0"/>
+<hr style="box-sizing: content-box; height: 0"/>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h2>Typography<a href="#Typography" style="background-color: transparent"></a></h2><p><strong style="font-weight: bold">This is bold text</strong></p>
+<p><strong style="font-weight: bold">This is also bold text</strong></p>
+<p><em>This is italic text</em></p>
+<p><em>This is also italic text</em></p>
+<p><del>Strikethrough</del></p>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h2>Blockquotes<a href="#Blockquotes" style="background-color: transparent"></a></h2><blockquote><p>Blockquotes can also be nested...</p>
+<blockquote><p>...by using additional greater-than signs right next to each other...</p>
+<blockquote><p>...or with spaces between arrows.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h2>Lists<a href="#Lists" style="background-color: transparent"></a></h2><p>Unordered</p>
+<ul>
+<li>Create a list by starting a line with <code style="font-family: monospace, monospace; font-size: 1em">+</code>, <code style="font-family: monospace, monospace; font-size: 1em">-</code>, or <code style="font-family: monospace, monospace; font-size: 1em">*</code></li>
+<li>Sub-lists are made by indenting 2 spaces:<ul>
+<li>Marker character change forces new list start:<ul>
+<li>Ac tristique libero volutpat at</li>
+<li>Facilisis in pretium nisl aliquet</li>
+<li>Nulla volutpat aliquam velit</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Very easy!</li>
+</ul>
+<p>Ordered</p>
+<ol>
+<li>Lorem ipsum dolor sit amet<ol>
+<li>Facilisis in pretium nisl aliquet</li>
+<li>Nulla volutpat aliquam velit</li>
+</ol>
+</li>
+<li>Consectetur adipiscing elit</li>
+<li>Integer molestie lorem at massa</li>
+</ol>
+<ol>
+<li>You can use sequential numbers...</li>
+<li>...or keep all the numbers as <code style="font-family: monospace, monospace; font-size: 1em">1.</code></li>
+</ol>
+<p>Start numbering with offset:</p>
+<ol>
+<li>foo</li>
+<li>bar</li>
+</ol>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h2>Code<a href="#Code" style="background-color: transparent"></a></h2><p>Inline <code style="font-family: monospace, monospace; font-size: 1em">code</code></p>
+<p>Indented code</p>
+<pre style="overflow: auto; font-family: monospace, monospace; font-size: 1em"><code style="font-family: monospace, monospace; font-size: 1em">// Some comments
+line 1 of code
+line 2 of code
+line 3 of code
+
+
+</code></pre>
+<p>Block code "fences"</p>
+<pre style="overflow: auto; font-family: monospace, monospace; font-size: 1em"><code style="font-family: monospace, monospace; font-size: 1em">Sample text here...</code></pre>
+<p>Syntax highlighting</p>
+<div style="background: #f8f8f8"><pre style="overflow: auto; font-family: monospace, monospace; font-size: 1em"><span></span><span style="color: #008000; font-weight: bold">var</span> <span>foo</span> <span style="color: #666">=</span> <span style="color: #008000; font-weight: bold">function</span> <span>(</span><span>bar</span><span>)</span> <span>{</span>
+  <span style="color: #008000; font-weight: bold">return</span> <span>bar</span><span style="color: #666">++</span><span>;</span>
+<span>};</span>
+
+<span>console</span><span>.</span><span>log</span><span>(</span><span>foo</span><span>(</span><span style="color: #666">5</span><span>));</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h2>Tables<a href="#Tables" style="background-color: transparent"></a></h2><table style="border-collapse: collapse; border-spacing: 0">
+<thead><tr>
+<th style="padding: 0">Option</th>
+<th style="padding: 0">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 0">data</td>
+<td style="padding: 0">path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td style="padding: 0">engine</td>
+<td style="padding: 0">engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td style="padding: 0">ext</td>
+<td style="padding: 0">extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
+<p>Right aligned columns</p>
+<table style="border-collapse: collapse; border-spacing: 0">
+<thead><tr>
+<th style="padding: 0; text-align:right">Option</th>
+<th style="padding: 0; text-align:right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 0; text-align:right">data</td>
+<td style="padding: 0; text-align:right">path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td style="padding: 0; text-align:right">engine</td>
+<td style="padding: 0; text-align:right">engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td style="padding: 0; text-align:right">ext</td>
+<td style="padding: 0; text-align:right">extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h2>Links<a href="#Links" style="background-color: transparent"></a></h2><p><a href="https://wikipedia.org" style="background-color: transparent">link text</a></p>
+<p><a href="https://wikipedia.org" style="background-color: transparent" title="The great Wikipedia!">link with title</a></p>
+<p>Autoconverted link <a href="https://wikipedia.org" style="background-color: transparent">https://wikipedia.org</a></p>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h2>Images<a href="#Images" style="background-color: transparent"></a></h2><h3>Remote Image<a href="#Remote-Image" style="background-color: transparent"></a></h3><p>Remote images (images with <code style="font-family: monospace, monospace; font-size: 1em">src</code> URL containing full http URL) should work.</p>
+<p><img alt="Wikipedia" src="https://upload.wikimedia.org/wikipedia/commons/7/74/Wikipedia-logo-es.png" style="border: 0"/></p>
+<h3>Local Image<a href="#Local-Image" style="background-color: transparent"></a></h3><p>Local images (images with <code style="font-family: monospace, monospace; font-size: 1em">src</code> pointing to local image) will be copied to <code style="font-family: monospace, monospace; font-size: 1em">out_dir/img</code> directory its name renamed.</p>
+<p>Below is an image of a carrot. Can you see it?</p>
+<p><img alt="A carrot" src="https://raw.githubusercontent.com/bennylp/nb2wp/master/out/demo2/img/img1..png" style="border: 0"/></p>
+<p>(source: <a href="http://pngimg.com/download/4984" style="background-color: transparent">http://pngimg.com/download/4984</a>)</p>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h1 style="font-size: 2em; margin: 0.67em 0">Latex<a href="#Latex" style="background-color: transparent"></a></h1><p>Latex directives will be converted. Supported target currently is "wp".</p>
+<p>This formula: $latex \sigma = \frac{1}{1 + e^{-x}} &bg=ffffff&s=2 $ is a definition of sigmoid.</p>
+<p>So is this, only bigger and is place on its own line:</p>
+<p>$latex \sigma = \frac{1}{1 + e^{-x}} &bg=ffffff&s=4 $</p>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h1 style="font-size: 2em; margin: 0.67em 0">Pandas DataFrame<a href="#Pandas-DataFrame" style="background-color: transparent"></a></h1>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>In [27]:</div>
+<div>
+<div>
+<div style="background: #f8f8f8"><pre style="overflow: auto; font-family: monospace, monospace; font-size: 1em"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #00F; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #00F; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #00F; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #00F; font-weight: bold">pd</span>
+
+<span>df</span> <span style="color: #666">=</span> <span>pd</span><span style="color: #666">.</span><span>DataFrame</span><span>({</span>
+        <span style="color: #BA2121">'name'</span><span>:[</span><span style="color: #BA2121">'john'</span><span>,</span><span style="color: #BA2121">'mary'</span><span>,</span><span style="color: #BA2121">'peter'</span><span>,</span><span style="color: #BA2121">'jeff'</span><span>,</span><span style="color: #BA2121">'bill'</span><span>,</span><span style="color: #BA2121">'lisa'</span><span>],</span>
+        <span style="color: #BA2121">'age'</span><span>:[</span><span style="color: #666">23</span><span>,</span><span style="color: #666">78</span><span>,</span><span style="color: #666">22</span><span>,</span><span style="color: #666">19</span><span>,</span><span style="color: #666">12</span><span>,</span><span style="color: #666">33</span><span>],</span>
+        <span style="color: #BA2121">'state'</span><span>:[</span><span style="color: #BA2121">'N/A'</span><span>,</span><span style="color: #BA2121">'dc'</span><span>,</span><span style="color: #BA2121">'california'</span><span>,</span><span style="color: #BA2121">'texas'</span><span>,</span><span style="color: #BA2121">'N/A'</span><span>,</span><span style="color: #BA2121">'dc'</span><span>]</span>
+     <span>})</span>
+<span style="color: #008000">print</span><span>(</span><span style="color: #BA2121">'Showing a dataframe:'</span><span>)</span>
+<span>df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div></div>
+<div>
+<pre style="overflow: auto; font-family: monospace, monospace; font-size: 1em">Showing a dataframe:
+</pre>
+</div>
+</div>
+<div>
+<div>Out[27]:</div>
+<div>
+<div>
+<table border="1" style="border-collapse: collapse; border-spacing: 0">
+<thead>
+<tr style="text-align: right;">
+<th style="padding: 0; text-align: right"></th>
+<th style="padding: 0; text-align: right">age</th>
+<th style="padding: 0; text-align: right">name</th>
+<th style="padding: 0; text-align: right">state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th style="padding: 0; vertical-align: top">0</th>
+<td style="padding: 0">23</td>
+<td style="padding: 0">john</td>
+<td style="padding: 0">N/A</td>
+</tr>
+<tr>
+<th style="padding: 0; vertical-align: top">1</th>
+<td style="padding: 0">78</td>
+<td style="padding: 0">mary</td>
+<td style="padding: 0">dc</td>
+</tr>
+<tr>
+<th style="padding: 0; vertical-align: top">2</th>
+<td style="padding: 0">22</td>
+<td style="padding: 0">peter</td>
+<td style="padding: 0">california</td>
+</tr>
+<tr>
+<th style="padding: 0; vertical-align: top">3</th>
+<td style="padding: 0">19</td>
+<td style="padding: 0">jeff</td>
+<td style="padding: 0">texas</td>
+</tr>
+<tr>
+<th style="padding: 0; vertical-align: top">4</th>
+<td style="padding: 0">12</td>
+<td style="padding: 0">bill</td>
+<td style="padding: 0">N/A</td>
+</tr>
+<tr>
+<th style="padding: 0; vertical-align: top">5</th>
+<td style="padding: 0">33</td>
+<td style="padding: 0">lisa</td>
+<td style="padding: 0">dc</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div><div>
+</div>
+<div>
+<div>
+<h1 style="font-size: 2em; margin: 0.67em 0">Matplotlib<a href="#Matplotlib" style="background-color: transparent"></a></h1>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>In [19]:</div>
+<div>
+<div>
+<div style="background: #f8f8f8"><pre style="overflow: auto; font-family: monospace, monospace; font-size: 1em"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #00F; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #00F; font-weight: bold">plt</span>
+
+<span>fig</span><span>,</span> <span>((</span><span>ax1</span><span>,</span> <span>ax2</span><span>),</span> <span>(</span><span>ax3</span><span>,</span> <span>ax4</span><span>))</span> <span style="color: #666">=</span> <span>plt</span><span style="color: #666">.</span><span>subplots</span><span>(</span><span style="color: #666">2</span><span>,</span> <span style="color: #666">2</span><span>,</span> <span>figsize</span><span style="color: #666">=</span><span>(</span><span style="color: #666">12</span><span>,</span> <span style="color: #666">12</span><span>))</span>
+<span>fig</span><span style="color: #666">.</span><span>suptitle</span><span>(</span><span style="color: #BA2121">'Multiple Random Charts'</span><span>)</span>
+<span>rng</span> <span style="color: #666">=</span> <span>np</span><span style="color: #666">.</span><span>random</span><span style="color: #666">.</span><span>RandomState</span><span>(</span><span style="color: #666">0</span><span>)</span>
+<span>x</span> <span style="color: #666">=</span> <span>rng</span><span style="color: #666">.</span><span>randn</span><span>(</span><span style="color: #666">100</span><span>)</span>
+<span>y</span> <span style="color: #666">=</span> <span>rng</span><span style="color: #666">.</span><span>randn</span><span>(</span><span style="color: #666">100</span><span>)</span>
+<span>colors</span> <span style="color: #666">=</span> <span>rng</span><span style="color: #666">.</span><span>rand</span><span>(</span><span style="color: #666">100</span><span>)</span>
+<span>sizes</span> <span style="color: #666">=</span> <span style="color: #666">1000</span> <span style="color: #666">*</span> <span>rng</span><span style="color: #666">.</span><span>rand</span><span>(</span><span style="color: #666">100</span><span>)</span>
+
+<span>ax1</span><span style="color: #666">.</span><span>scatter</span><span>(</span><span>x</span><span>,</span> <span>y</span><span>,</span> <span>c</span><span style="color: #666">=</span><span>colors</span><span>,</span> <span>s</span><span style="color: #666">=</span><span>sizes</span><span>,</span> <span>alpha</span><span style="color: #666">=</span><span style="color: #666">0.3</span><span>,</span>
+            <span>cmap</span><span style="color: #666">=</span><span style="color: #BA2121">'viridis'</span><span>)</span>
+
+<span>rng</span> <span style="color: #666">=</span> <span>np</span><span style="color: #666">.</span><span>random</span><span style="color: #666">.</span><span>RandomState</span><span>(</span><span style="color: #666">0</span><span>)</span>
+<span style="color: #008000; font-weight: bold">for</span> <span>marker</span> <span style="color: #A2F; font-weight: bold">in</span> <span>[</span><span style="color: #BA2121">'o'</span><span>,</span> <span style="color: #BA2121">'.'</span><span>,</span> <span style="color: #BA2121">','</span><span>,</span> <span style="color: #BA2121">'x'</span><span>,</span> <span style="color: #BA2121">'+'</span><span>,</span> <span style="color: #BA2121">'v'</span><span>,</span> <span style="color: #BA2121">'^'</span><span>,</span> <span style="color: #BA2121">'&lt;'</span><span>,</span> <span style="color: #BA2121">'&gt;'</span><span>,</span> <span style="color: #BA2121">'s'</span><span>,</span> <span style="color: #BA2121">'d'</span><span>]:</span>
+    <span>ax2</span><span style="color: #666">.</span><span>plot</span><span>(</span><span>rng</span><span style="color: #666">.</span><span>rand</span><span>(</span><span style="color: #666">5</span><span>),</span> <span>rng</span><span style="color: #666">.</span><span>rand</span><span>(</span><span style="color: #666">5</span><span>),</span> <span>marker</span><span>,</span>
+             <span>label</span><span style="color: #666">=</span><span style="color: #BA2121">"marker='</span><span style="color: #B68; font-weight: bold">{0}</span><span style="color: #BA2121">'"</span><span style="color: #666">.</span><span>format</span><span>(</span><span>marker</span><span>))</span>
+<span>ax2</span><span style="color: #666">.</span><span>legend</span><span>(</span><span>numpoints</span><span style="color: #666">=</span><span style="color: #666">1</span><span>)</span>
+<span>ax2</span><span style="color: #666">.</span><span>set_xlim</span><span>(</span><span style="color: #666">0</span><span>,</span> <span style="color: #666">1.8</span><span>);</span>
+
+<span>x</span> <span style="color: #666">=</span> <span>np</span><span style="color: #666">.</span><span>linspace</span><span>(</span><span style="color: #666">0</span><span>,</span> <span style="color: #666">10</span><span>,</span> <span style="color: #666">30</span><span>)</span>
+<span>y</span> <span style="color: #666">=</span> <span>np</span><span style="color: #666">.</span><span>sin</span><span>(</span><span>x</span><span>)</span>
+<span>ax3</span><span style="color: #666">.</span><span>plot</span><span>(</span><span>x</span><span>,</span> <span>y</span><span>,</span> <span style="color: #BA2121">'-ok'</span><span>);</span>
+
+<span style="color: #008000; font-weight: bold">for</span> <span>i</span> <span style="color: #A2F; font-weight: bold">in</span> <span style="color: #008000">range</span><span>(</span><span style="color: #666">4</span><span>):</span>
+    <span>x</span> <span style="color: #666">=</span> <span>np</span><span style="color: #666">.</span><span>random</span><span style="color: #666">.</span><span>normal</span><span>(</span><span>loc</span><span style="color: #666">=</span><span>i</span><span>,</span> <span>size</span><span style="color: #666">=</span><span style="color: #666">100</span><span>)</span>
+    <span>y</span> <span style="color: #666">=</span> <span>np</span><span style="color: #666">.</span><span>random</span><span style="color: #666">.</span><span>normal</span><span>(</span><span>loc</span><span style="color: #666">=</span><span>i</span><span>,</span> <span>size</span><span style="color: #666">=</span><span style="color: #666">100</span><span>)</span>
+    <span>ax4</span><span style="color: #666">.</span><span>scatter</span><span>(</span><span>x</span><span>,</span> <span>y</span><span>,</span> <span>label</span><span style="color: #666">=</span><span style="color: #008000">str</span><span>(</span><span>i</span><span>))</span>
+<span>ax4</span><span style="color: #666">.</span><span>legend</span><span>()</span>
+
+<span>fig</span><span style="color: #666">.</span><span>tight_layout</span><span>(</span><span>rect</span><span style="color: #666">=</span><span>[</span><span style="color: #666">0</span><span>,</span> <span style="color: #666">0.03</span><span>,</span> <span style="color: #666">1</span><span>,</span> <span style="color: #666">0.97</span><span>])</span>
+<span>plt</span><span style="color: #666">.</span><span>show</span><span>()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div></div>
+<div>
+<img src="https://raw.githubusercontent.com/bennylp/nb2wp/master/out/demo2/img/img2.png" style="border: 0"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
