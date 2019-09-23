@@ -158,7 +158,7 @@ def nb2wp(nbfile, out_dir='', template='full', css_file='style.css',
                 # Local file
                 img_filename = os.path.basename(src)
                 img_ext = os.path.splitext(img_filename)[1]
-                img_file = 'img{}.{}'.format(img_i, img_ext)
+                img_file = 'img{}{}'.format(img_i, img_ext)
                 img_path = os.path.join(img_parent_path, img_file)
                 copyfile(src, img_path)
                 img['src'] = img_url_prefix + '/' + img_file
@@ -230,5 +230,6 @@ def nb2wp(nbfile, out_dir='', template='full', css_file='style.css',
 
 
 if __name__ == '__main__':
-    nb2wp('Readme.ipynb', out_dir='out/tmp')
+    nb2wp('Readme.ipynb', out_dir='out/tmp', 
+          img_url_prefix='https://raw.githubusercontent.com/bennylp/nb2wp/master/out/demo2/img')
     
