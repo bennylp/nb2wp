@@ -1,6 +1,6 @@
 # nb2wp - Convert Jupyter Notebook to Wordpress.com HTML
 
-This `np2wp` utility converts Jupyter notebooks to plain HTML suitable for Wordpress.com. Note the difference between **Wordpress.com** service and Wordpress.org platform. The Wordpress.com is much stricter.
+This `np2wp` utility converts Jupyter notebooks to plain HTML suitable for Wordpress.com. Note the difference between **Wordpress.com** service and Wordpress.org platform. The Wordpress.com is much stricter (no arbitrary plugins, no scripts, no CSS, no data: URI, etc.).
 
 This utility does the following:
 - convert .ipynb to HTML using [nbconvert](https://nbconvert.readthedocs.io/en/latest/) using selected template (full, basic, or custom)
