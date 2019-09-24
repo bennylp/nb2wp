@@ -12,4 +12,4 @@ Then you need to do some manual works:
 - copy-paste the HTML inside the `<body>` to Wordpress HTML editor
 - upload the image directory.
 
-Open the **[Readme.ipynb](Readme.ipynb)** for more info.
+Open the **[Readme.ipynb](Readme.ipynb)** for more info. And see [how that notebook looks like in Wordpress blog](https://indoml.com/2019/09/24/converting-jupyter-notebook-to-wordpress-com-html/)
