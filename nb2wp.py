@@ -12,7 +12,7 @@ from shutil import copyfile
 
 def nb2wp(nbfile, out_dir='', template='full', css_file='style.css', 
           save_img=True, img_dir='img', img_url_prefix='img', 
-          latex='wp', remove_attrs=True, 
+          latex='wp', remove_attrs=True, footer=True,
           save_css=False, save_html=False, quiet=False):
     """
     Convert Jupyter notebook file to Wordpress.com HTML.
@@ -37,7 +37,8 @@ def nb2wp(nbfile, out_dir='', template='full', css_file='style.css',
                 empty,  no Latex conversion  will be performed  (the directives
                 will be left unchanged).
     remove_attrs: Remove various HTML attributes such as "class", "id" from the
-                output HTML file to simplify the file. Default: True 
+                output HTML file to simplify the file. Default: True
+    footer:     Add conversion footer. Default: True
     save_css:   Save  the CSS  that is used to 'style.css' file in out_dir, for
                 debugging. Default: False
     save_html:  Save  the HTML  before it is  processed to 'input.html' file in
@@ -49,6 +50,10 @@ def nb2wp(nbfile, out_dir='', template='full', css_file='style.css',
     filename = os.path.splitext(file)[0]
     if not out_dir:
         out_dir = filename
+        
+    if not os.path.exists(out_dir):
+        os.makedirs(out_dir)
+        
     if img_url_prefix[-1] == '/':
         img_url_prefix = img_url_prefix[:-1]
      
@@ -80,21 +85,25 @@ def nb2wp(nbfile, out_dir='', template='full', css_file='style.css',
             css = ''
 
     # Replace/remove string patterns in CSS
-    patterns = [# comments may contain HTML tag that confuses our regex
+    patterns = [# comments may contain HTML tags that confuses our regex.
                 (r'/\*.*?\*/', '', re.I|re.S|re.M), 
                 
                 # cssutils not able to handle '(' in CSS selector
-                (r'[_0-9a-zA-Z-#.:*]+\(.*?}', '', re.I|re.S|re.M), 
+                # But alas.. this regex removal is broken
+                #(r'[_0-9a-zA-Z-#.:*]+\(.*?}', '', re.I|re.S|re.M), 
                 
                 # cssutils not able to handle ~ in CSS selector
-                (r'[_0-9a-zA-Z-#.:*]+\s*~', '', re.I|re.S|re.M), 
+                # But alas.. this regex removal is broken
+                #(r'[_0-9a-zA-Z-#.:*]+\s*~', '', re.I|re.S|re.M), 
                ]
     for str_pat, repl, flag in patterns:
         pat = re.compile(str_pat, flag)
         css = pat.sub(repl, css)
     
     if save_css:
-        with open(os.path.join(out_dir, 'style.css'), 'w') as f:
+        out_css_file = os.path.join(out_dir, 'style.css')
+        debug('Saving CSS to {}'.format(out_css_file))
+        with open(out_css_file, 'w') as f:
             f.write(css)
 
     patterns = [# silly character after headings
@@ -111,7 +120,9 @@ def nb2wp(nbfile, out_dir='', template='full', css_file='style.css',
         html = pat.sub(repl, html)
     
     if save_html:
-        with open(os.path.join(out_dir, 'input.html'), 'w') as f:
+        out_html_file = os.path.join(out_dir, 'input.html')
+        debug('Saving tmp HTML to {}'.format(out_html_file))
+        with open(out_html_file, 'w') as f:
             f.write(html)
 
     #
@@ -119,7 +130,6 @@ def nb2wp(nbfile, out_dir='', template='full', css_file='style.css',
     #
     inliner = pynliner.Pynliner()
     if css:
-        #print('CSS is found')
         inliner = inliner.from_string(html).with_cssString(css)
     else:
         inliner = inliner.from_string(html)
@@ -214,13 +224,18 @@ def nb2wp(nbfile, out_dir='', template='full', css_file='style.css',
     else:
         raise RuntimeError("Invalid latex argument value '{}'".format(latex))
 
-    
+    # Add footer
+    if footer:
+        el = """<p align="center" style="font-size: 12px; color: #9d9999;">
+                    Wordpress conversion from Readme.ipynb by <A HREF="https://github.com/bennylp/nb2wp">nb2wp</A>
+                </p>"""
+        end_body = re.search(r'</body>', html, re.I)
+        if end_body is not None:
+            html = html[:end_body.start()] + el + html[end_body.start():]
+        
     #
     # Save HTML
     #
-    if not os.path.exists(out_dir):
-        os.makedirs(out_dir)
-    
     htmlfile = os.path.join(out_dir, filename + '.html')
     with open(htmlfile, 'w') as f:
         f.write(html)
@@ -229,7 +244,35 @@ def nb2wp(nbfile, out_dir='', template='full', css_file='style.css',
     debug('{}: {} bytes written in {:.3f}s'.format(htmlfile, len(html), elapsed))
 
 
-if __name__ == '__main__':
-    nb2wp('Readme.ipynb', out_dir='out/tmp', 
-          img_url_prefix='https://raw.githubusercontent.com/bennylp/nb2wp/master/out/demo2/img')
+def test():
+    with open('style.css') as f:
+        css = f.read()
     
+    syntax_hl = """
+    <div class="input_area">
+        <div class=" highlight hl-ipython3">
+            <pre>
+                <span class="kn">Hello world</span>
+            </pre>
+        </div>
+    </div>"""
+    
+    html = syntax_hl
+    
+    inliner = pynliner.Pynliner()
+    inliner = inliner.from_string(html).with_cssString(css)
+
+    html = inliner.run()
+    html = re.sub(r'<style.*?</style>', '', html, re.I|re.S|re.M)
+    if '</style>' in html:
+        pos = html.find('</style>')
+        html = html[pos+8:]
+    print(html)
+        
+        
+if __name__ == '__main__':
+    #test()
+    #nb2wp('Readme.ipynb', out_dir='out/tmp',
+    #      css_file='style.css', save_css=True, remove_attrs=False, 
+    #      img_url_prefix='https://raw.githubusercontent.com/bennylp/nb2wp/master/out/demo2/img')
+    pass

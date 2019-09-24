@@ -1,14 +1,6 @@
-/*!
-*
-* Twitter Bootstrap
-*
-*/
-/*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -180,7 +172,7 @@ td,
 th {
   padding: 0;
 }
-/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+
 @media print {
   *,
   *:before,
@@ -6638,17 +6630,9 @@ button.close {
     display: none !important;
   }
 }
-/*!
-*
-* Font Awesome
-*
-*/
-/*!
- *  Font Awesome 4.2.0 by @davegandy - http://fontawesome.io - @fontawesome
- *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
- */
-/* FONT PATH
- * -------------------------- */
+
+
+
 @font-face {
   font-family: 'FontAwesome';
   src: url('../components/font-awesome/fonts/fontawesome-webfont.eot?v=4.2.0');
@@ -6664,7 +6648,7 @@ button.close {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/* makes the font 33% larger relative to the icon container */
+
 .fa-lg {
   font-size: 1.33333333em;
   line-height: 0.75em;
@@ -6806,8 +6790,7 @@ button.close {
 .fa-inverse {
   color: #fff;
 }
-/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
-   readers do not read off random characters that represent icons */
+
 .fa-glass:before {
   content: "\f000";
 }
@@ -8315,11 +8298,7 @@ button.close {
 .fa-meanpath:before {
   content: "\f20c";
 }
-/*!
-*
-* IPython base
-*
-*/
+
 .modal.fade .modal-dialog {
   -webkit-transform: translate(0, 0);
   -ms-transform: translate(0, 0);
@@ -8336,8 +8315,8 @@ pre {
 label {
   font-weight: normal;
 }
-/* Make the page background atleast 100% the height of the view port */
-/* Make the page itself atleast 70% the height of the view port */
+
+
 .border-box-sizing {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -8349,24 +8328,11 @@ label {
 .no-padding {
   padding: 0px;
 }
-/* Flexible box model classes */
-/* Taken from Alex Russell http://infrequently.org/2009/08/css-3-progress/ */
-/* This file is a compatability layer.  It allows the usage of flexible box 
-model layouts accross multiple browsers, including older browsers.  The newest,
-universal implementation of the flexible box model is used when available (see
-`Modern browsers` comments below).  Browsers that are known to implement this 
-new spec completely include:
 
-    Firefox 28.0+
-    Chrome 29.0+
-    Internet Explorer 11+ 
-    Opera 17.0+
 
-Browsers not listed, including Safari, are supported via the styling under the
-`Old browsers` comments below.
-*/
+
 .hbox {
-  /* Old browsers */
+  
   display: -webkit-box;
   -webkit-box-orient: horizontal;
   -webkit-box-align: stretch;
@@ -8376,21 +8342,21 @@ Browsers not listed, including Safari, are supported via the styling under the
   display: box;
   box-orient: horizontal;
   box-align: stretch;
-  /* Modern browsers */
+  
   display: flex;
   flex-direction: row;
   align-items: stretch;
 }
 .hbox > * {
-  /* Old browsers */
+  
   -webkit-box-flex: 0;
   -moz-box-flex: 0;
   box-flex: 0;
-  /* Modern browsers */
+  
   flex: none;
 }
 .vbox {
-  /* Old browsers */
+  
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-box-align: stretch;
@@ -8400,79 +8366,79 @@ Browsers not listed, including Safari, are supported via the styling under the
   display: box;
   box-orient: vertical;
   box-align: stretch;
-  /* Modern browsers */
+  
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 .vbox > * {
-  /* Old browsers */
+  
   -webkit-box-flex: 0;
   -moz-box-flex: 0;
   box-flex: 0;
-  /* Modern browsers */
+  
   flex: none;
 }
 .hbox.reverse,
 .vbox.reverse,
 .reverse {
-  /* Old browsers */
+  
   -webkit-box-direction: reverse;
   -moz-box-direction: reverse;
   box-direction: reverse;
-  /* Modern browsers */
+  
   flex-direction: row-reverse;
 }
 .hbox.box-flex0,
 .vbox.box-flex0,
 .box-flex0 {
-  /* Old browsers */
+  
   -webkit-box-flex: 0;
   -moz-box-flex: 0;
   box-flex: 0;
-  /* Modern browsers */
+  
   flex: none;
   width: auto;
 }
 .hbox.box-flex1,
 .vbox.box-flex1,
 .box-flex1 {
-  /* Old browsers */
+  
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   box-flex: 1;
-  /* Modern browsers */
+  
   flex: 1;
 }
 .hbox.box-flex,
 .vbox.box-flex,
 .box-flex {
-  /* Old browsers */
-  /* Old browsers */
+  
+  
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   box-flex: 1;
-  /* Modern browsers */
+  
   flex: 1;
 }
 .hbox.box-flex2,
 .vbox.box-flex2,
 .box-flex2 {
-  /* Old browsers */
+  
   -webkit-box-flex: 2;
   -moz-box-flex: 2;
   box-flex: 2;
-  /* Modern browsers */
+  
   flex: 2;
 }
 .box-group1 {
-  /*  Deprecated */
+  
   -webkit-box-flex-group: 1;
   -moz-box-flex-group: 1;
   box-flex-group: 1;
 }
 .box-group2 {
-  /* Deprecated */
+  
   -webkit-box-flex-group: 2;
   -moz-box-flex-group: 2;
   box-flex-group: 2;
@@ -8480,101 +8446,101 @@ Browsers not listed, including Safari, are supported via the styling under the
 .hbox.start,
 .vbox.start,
 .start {
-  /* Old browsers */
+  
   -webkit-box-pack: start;
   -moz-box-pack: start;
   box-pack: start;
-  /* Modern browsers */
+  
   justify-content: flex-start;
 }
 .hbox.end,
 .vbox.end,
 .end {
-  /* Old browsers */
+  
   -webkit-box-pack: end;
   -moz-box-pack: end;
   box-pack: end;
-  /* Modern browsers */
+  
   justify-content: flex-end;
 }
 .hbox.center,
 .vbox.center,
 .center {
-  /* Old browsers */
+  
   -webkit-box-pack: center;
   -moz-box-pack: center;
   box-pack: center;
-  /* Modern browsers */
+  
   justify-content: center;
 }
 .hbox.baseline,
 .vbox.baseline,
 .baseline {
-  /* Old browsers */
+  
   -webkit-box-pack: baseline;
   -moz-box-pack: baseline;
   box-pack: baseline;
-  /* Modern browsers */
+  
   justify-content: baseline;
 }
 .hbox.stretch,
 .vbox.stretch,
 .stretch {
-  /* Old browsers */
+  
   -webkit-box-pack: stretch;
   -moz-box-pack: stretch;
   box-pack: stretch;
-  /* Modern browsers */
+  
   justify-content: stretch;
 }
 .hbox.align-start,
 .vbox.align-start,
 .align-start {
-  /* Old browsers */
+  
   -webkit-box-align: start;
   -moz-box-align: start;
   box-align: start;
-  /* Modern browsers */
+  
   align-items: flex-start;
 }
 .hbox.align-end,
 .vbox.align-end,
 .align-end {
-  /* Old browsers */
+  
   -webkit-box-align: end;
   -moz-box-align: end;
   box-align: end;
-  /* Modern browsers */
+  
   align-items: flex-end;
 }
 .hbox.align-center,
 .vbox.align-center,
 .align-center {
-  /* Old browsers */
+  
   -webkit-box-align: center;
   -moz-box-align: center;
   box-align: center;
-  /* Modern browsers */
+  
   align-items: center;
 }
 .hbox.align-baseline,
 .vbox.align-baseline,
 .align-baseline {
-  /* Old browsers */
+  
   -webkit-box-align: baseline;
   -moz-box-align: baseline;
   box-align: baseline;
-  /* Modern browsers */
+  
   align-items: baseline;
 }
 .hbox.align-stretch,
 .vbox.align-stretch,
 .align-stretch {
-  /* Old browsers */
+  
   -webkit-box-align: stretch;
   -moz-box-align: stretch;
   box-align: stretch;
-  /* Modern browsers */
+  
   align-items: stretch;
 }
 div.error {
@@ -8594,15 +8560,10 @@ div.traceback-wrapper {
   max-width: 800px;
   margin: auto;
 }
-/**
- * Primary styles
- *
- * Author: Jupyter Development Team
- */
+
 body {
   background-color: #fff;
-  /* This makes sure that the body covers the entire window and needs to
-       be in a different element than the display: box in wrapper below */
+  
   position: absolute;
   left: 0px;
   right: 0px;
@@ -8611,10 +8572,10 @@ body {
   overflow: visible;
 }
 body > #header {
-  /* Initially hidden to prevent FLOUC */
+  
   display: none;
   background-color: #fff;
-  /* Display over codemirror */
+  
   position: relative;
   z-index: 100;
 }
@@ -8680,7 +8641,7 @@ body > #header .header-bar {
     height: auto !important;
   }
 }
-/* Smaller buttons */
+
 .ui-button .ui-button-text {
   padding: 0.2em 0.8em;
   font-size: 77%;
@@ -8784,7 +8745,7 @@ span#login_widget > .button .badge,
   margin-top: 10px;
 }
 .modal_stretch .modal-dialog {
-  /* Old browsers */
+  
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-box-align: stretch;
@@ -8794,7 +8755,7 @@ span#login_widget > .button .badge,
   display: box;
   box-orient: vertical;
   box-align: stretch;
-  /* Modern browsers */
+  
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -8816,22 +8777,14 @@ span#login_widget > .button .badge,
     margin-right: 12px;
   }
 }
-/*!
-*
-* IPython auth
-*
-*/
+
 .center-nav {
   display: inline-block;
   margin-bottom: -4px;
 }
-/*!
-*
-* IPython tree view
-*
-*/
-/* We need an invisible input field on top of the sentense*/
-/* "Drag file onto the list ..." */
+
+
+
 .alternate_upload {
   background-color: none;
   display: inline;
@@ -8852,11 +8805,7 @@ span#login_widget > .button .badge,
 .alternate_upload .btn-upload {
   height: 22px;
 }
-/**
- * Primary styles
- *
- * Author: Jupyter Development Team
- */
+
 ul#tabs {
   margin-bottom: 4px;
 }
@@ -9160,11 +9109,7 @@ ul#new-menu {
   display: inline-block;
   padding-top: 4px;
 }
-/*!
-*
-* IPython text editor webapp
-*
-*/
+
 .selected-keymap i.fa {
   padding: 0px 5px;
 }
@@ -9180,8 +9125,7 @@ ul#new-menu {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .edit_app #menubar .navbar {
-  /* Use a negative 1 bottom margin, so the border overlaps the border of the
-    header */
+  
   margin-bottom: -1px;
 }
 .dirty-indicator {
@@ -9282,16 +9226,12 @@ ul#new-menu {
     box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
   }
 }
-/*!
-*
-* IPython notebook
-*
-*/
-/* CSS font colors for translated ANSI colors. */
+
+
 .ansibold {
   font-weight: bold;
 }
-/* use dark versions for foreground, to improve visibility */
+
 .ansiblack {
   color: black;
 }
@@ -9316,7 +9256,7 @@ ul#new-menu {
 .ansigray {
   color: gray;
 }
-/* and light for background, for the same reason */
+
 .ansibgblack {
   background-color: black;
 }
@@ -9342,7 +9282,7 @@ ul#new-menu {
   background-color: gray;
 }
 div.cell {
-  /* Old browsers */
+  
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-box-align: stretch;
@@ -9352,7 +9292,7 @@ div.cell {
   display: box;
   box-orient: vertical;
   box-align: stretch;
-  /* Modern browsers */
+  
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -9365,7 +9305,7 @@ div.cell {
   border-color: transparent;
   width: 100%;
   padding: 5px;
-  /* This acts as a spacer between cells, that is outside the border */
+  
   margin: 0px;
   outline: none;
   border-left-width: 1px;
@@ -9414,23 +9354,23 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 .prompt {
-  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  
   min-width: 14ex;
-  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  
   padding: 0.4em;
   margin: 0px;
   font-family: monospace;
   text-align: right;
-  /* This has to match that of the the CodeMirror class line-height below */
+  
   line-height: 1.21429em;
-  /* Don't highlight prompt number selection */
+  
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  /* Use default cursor */
+  
   cursor: default;
 }
 @media (max-width: 540px) {
@@ -9439,7 +9379,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
-  /* Old browsers */
+  
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-box-align: stretch;
@@ -9449,34 +9389,32 @@ div.inner_cell {
   display: box;
   box-orient: vertical;
   box-align: stretch;
-  /* Modern browsers */
+  
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  /* Old browsers */
+  
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   box-flex: 1;
-  /* Modern browsers */
+  
   flex: 1;
 }
-/* input_area and input_prompt must match in top border and margin for alignment */
+
 div.input_area {
   border: 1px solid #cfcfcf;
   border-radius: 2px;
   background: #f7f7f7;
   line-height: 1.21429em;
 }
-/* This is needed so that empty prompt areas can collapse to zero height when there
-   is no content in the output_subarea and the prompt. The main purpose of this is
-   to make sure that empty JavaScript output_subareas have no height. */
+
 div.prompt:empty {
   padding-top: 0;
   padding-bottom: 0;
 }
 div.unrecognized_cell {
   padding: 5px 5px 5px 0px;
-  /* Old browsers */
+  
   display: -webkit-box;
   -webkit-box-orient: horizontal;
   -webkit-box-align: stretch;
@@ -9486,7 +9424,7 @@ div.unrecognized_cell {
   display: box;
   box-orient: horizontal;
   box-align: stretch;
-  /* Modern browsers */
+  
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -9513,17 +9451,17 @@ div.unrecognized_cell .inner_cell a:hover {
   }
 }
 div.code_cell {
-  /* avoid page breaking on code cells when printing */
+  
 }
 @media print {
   div.code_cell {
     page-break-inside: avoid;
   }
 }
-/* any special styling for code cells that are currently running goes here */
+
 div.input {
   page-break-inside: avoid;
-  /* Old browsers */
+  
   display: -webkit-box;
   -webkit-box-orient: horizontal;
   -webkit-box-align: stretch;
@@ -9533,14 +9471,14 @@ div.input {
   display: box;
   box-orient: horizontal;
   box-align: stretch;
-  /* Modern browsers */
+  
   display: flex;
   flex-direction: row;
   align-items: stretch;
 }
 @media (max-width: 540px) {
   div.input {
-    /* Old browsers */
+    
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-box-align: stretch;
@@ -9550,13 +9488,13 @@ div.input {
     display: box;
     box-orient: vertical;
     box-align: stretch;
-    /* Modern browsers */
+    
     display: flex;
     flex-direction: column;
     align-items: stretch;
   }
 }
-/* input_area and input_prompt must match in top border and margin for alignment */
+
 div.input_prompt {
   color: #303F9F;
   border-top: 1px solid transparent;
@@ -9573,34 +9511,25 @@ div.input_area > div.highlight > pre {
   padding: 0px;
   background-color: transparent;
 }
-/* The following gets added to the head if it is detected that the user has a
- * monospace font with inconsistent normal/bold/italic height.  See
- * notebookmain.js.  Such fonts will have keywords vertically offset with
- * respect to the rest of the text.  The user should select a better font.
- * See: https://github.com/ipython/ipython/issues/1503
- *
- * .CodeMirror span {
- *      vertical-align: bottom;
- * }
- */
+
 .CodeMirror {
   line-height: 1.21429em;
-  /* Changed from 1em to our global default */
+  
   font-size: 14px;
   height: auto;
-  /* Changed to auto to autogrow */
+  
   background: none;
-  /* Changed from white to allow our bg to show through */
+  
 }
 .CodeMirror-scroll {
-  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
-  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  
+  
   overflow-y: hidden;
   overflow-x: auto;
 }
 .CodeMirror-lines {
-  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
-  /* we have set a different line-height and want this to scale with that. */
+  
+  
   padding: 0.4em;
 }
 .CodeMirror-linenumber {
@@ -9611,18 +9540,13 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
+  
+  
   padding: 0;
   border: 0;
   border-radius: 0;
 }
-/*
 
-Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
-Adapted from GitHub theme
-
-*/
 .highlight-base {
   color: #000;
 }
@@ -9665,7 +9589,7 @@ Adapted from GitHub theme
 .highlight-meta {
   color: #AA22FF;
 }
-/* previously not defined, copying from default codemirror */
+
 .highlight-def {
   color: #00f;
 }
@@ -9693,7 +9617,7 @@ Adapted from GitHub theme
 .highlight-link {
   color: #00c;
 }
-/* apply the same style to codemirror */
+
 .cm-s-ipython span.cm-keyword {
   color: #008000;
   font-weight: bold;
@@ -9766,9 +9690,9 @@ Adapted from GitHub theme
   background-repeat: no-repeat;
 }
 div.output_wrapper {
-  /* this position must be relative to enable descendents to be absolute within it */
+  
   position: relative;
-  /* Old browsers */
+  
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-box-align: stretch;
@@ -9778,17 +9702,17 @@ div.output_wrapper {
   display: box;
   box-orient: vertical;
   box-align: stretch;
-  /* Modern browsers */
+  
   display: flex;
   flex-direction: column;
   align-items: stretch;
   z-index: 1;
 }
-/* class for the output area when it should be height-limited */
+
 div.output_scroll {
-  /* ideally, this would be max-height, but FF barfs all over that */
+  
   height: 24em;
-  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  
   width: 100%;
   overflow: auto;
   border-radius: 2px;
@@ -9796,11 +9720,11 @@ div.output_scroll {
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
   display: block;
 }
-/* output div while it is collapsed */
+
 div.output_collapsed {
   margin: 0px;
   padding: 0px;
-  /* Old browsers */
+  
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-box-align: stretch;
@@ -9810,7 +9734,7 @@ div.output_collapsed {
   display: box;
   box-orient: vertical;
   box-align: stretch;
-  /* Modern browsers */
+  
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -9822,7 +9746,7 @@ div.out_prompt_overlay {
   border-radius: 2px;
 }
 div.out_prompt_overlay:hover {
-  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  
   -webkit-box-shadow: inset 0 0 1px #000;
   box-shadow: inset 0 0 1px #000;
   background: rgba(240, 240, 240, 0.5);
@@ -9830,11 +9754,11 @@ div.out_prompt_overlay:hover {
 div.output_prompt {
   color: #D84315;
 }
-/* This class is the outer container of all output sections. */
+
 div.output_area {
   padding: 0px;
   page-break-inside: avoid;
-  /* Old browsers */
+  
   display: -webkit-box;
   -webkit-box-orient: horizontal;
   -webkit-box-align: stretch;
@@ -9844,7 +9768,7 @@ div.output_area {
   display: box;
   box-orient: horizontal;
   box-align: stretch;
-  /* Modern browsers */
+  
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -9869,10 +9793,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-/* This is needed to protect the pre formating from global settings such
-   as that of bootstrap */
+
 .output {
-  /* Old browsers */
+  
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-box-align: stretch;
@@ -9882,14 +9805,14 @@ div.output_area svg.unconfined {
   display: box;
   box-orient: vertical;
   box-align: stretch;
-  /* Modern browsers */
+  
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 @media (max-width: 540px) {
   div.output_area {
-    /* Old browsers */
+    
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-box-align: stretch;
@@ -9899,7 +9822,7 @@ div.output_area svg.unconfined {
     display: box;
     box-orient: vertical;
     box-align: stretch;
-    /* Modern browsers */
+    
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -9914,62 +9837,60 @@ div.output_area pre {
   background-color: transparent;
   border-radius: 0;
 }
-/* This class is for the output subarea inside the output_area and after
-   the prompt div. */
+
 div.output_subarea {
   overflow-x: auto;
   padding: 0.4em;
-  /* Old browsers */
+  
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   box-flex: 1;
-  /* Modern browsers */
+  
   flex: 1;
   max-width: calc(100% - 14ex);
 }
 div.output_scroll div.output_subarea {
   overflow-x: visible;
 }
-/* The rest of the output_* classes are for special styling of the different
-   output types */
-/* all text output has this class: */
+
+
 div.output_text {
   text-align: left;
   color: #000;
-  /* This has to match that of the the CodeMirror class line-height below */
+  
   line-height: 1.21429em;
 }
-/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+
 div.output_stderr {
   background: #fdd;
-  /* very light red background for stderr */
+  
 }
 div.output_latex {
   text-align: left;
 }
-/* Empty output_javascript divs should have no height */
+
 div.output_javascript:empty {
   padding: 0;
 }
 .js-error {
   color: darkred;
 }
-/* raw_input styles */
+
 div.raw_input_container {
   line-height: 1.21429em;
   padding-top: 5px;
 }
 pre.raw_input_prompt {
-  /* nothing needed here. */
+  
 }
 input.raw_input {
   font-family: monospace;
   font-size: inherit;
   color: inherit;
   width: auto;
-  /* make sure input baseline aligns with prompt */
+  
   vertical-align: baseline;
-  /* padding + margin = 0.5em between prompt and cursor */
+  
   padding: 0em 0.25em;
   margin: 0em 0.25em;
 }
@@ -9994,7 +9915,7 @@ div.output_unrecognized a:hover {
 }
 .rendered_html {
   color: #000;
-  /* any extras will just be numbers: */
+  
 }
 .rendered_html em {
   font-style: italic;
@@ -10174,7 +10095,7 @@ div.output_unrecognized a:hover {
   max-width: none;
 }
 div.text_cell {
-  /* Old browsers */
+  
   display: -webkit-box;
   -webkit-box-orient: horizontal;
   -webkit-box-align: stretch;
@@ -10184,7 +10105,7 @@ div.text_cell {
   display: box;
   box-orient: horizontal;
   box-align: stretch;
-  /* Modern browsers */
+  
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -10195,7 +10116,7 @@ div.text_cell {
   }
 }
 div.text_cell_render {
-  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  
   outline: none;
   resize: none;
   width: inherit;
@@ -10258,11 +10179,7 @@ h6:hover .anchor-link {
   font-size: 100%;
   font-style: italic;
 }
-/*!
-*
-* IPython notebook webapp
-*
-*/
+
 @media (max-width: 767px) {
   .notebook_app {
     padding-left: 0px;
@@ -10289,7 +10206,7 @@ div#notebook {
   overflow-y: hidden;
   overflow-x: auto;
   width: 100%;
-  /* This spaces the page away from the edge of the notebook area */
+  
   padding-top: 20px;
   margin: 0px;
   outline: none;
@@ -10326,9 +10243,7 @@ pre.dialog {
 p.dialog {
   padding: 0.2em;
 }
-/* Word-wrap output correctly.  This is the CSS3 spelling, though Firefox seems
-   to not honor it correctly.  Webkit browsers (Chrome, rekonq, Safari) do.
- */
+
 pre,
 code,
 kbd,
@@ -10364,7 +10279,7 @@ kbd {
   padding-top: 1px;
   padding-bottom: 1px;
 }
-/* CSS for the cell toolbar */
+
 .celltoolbar {
   border: thin solid #CFCFCF;
   border-bottom: none;
@@ -10373,7 +10288,7 @@ kbd {
   width: 100%;
   height: 29px;
   padding-right: 4px;
-  /* Old browsers */
+  
   display: -webkit-box;
   -webkit-box-orient: horizontal;
   -webkit-box-align: stretch;
@@ -10383,15 +10298,15 @@ kbd {
   display: box;
   box-orient: horizontal;
   box-align: stretch;
-  /* Modern browsers */
+  
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  /* Old browsers */
+  
   -webkit-box-pack: end;
   -moz-box-pack: end;
   box-pack: end;
-  /* Modern browsers */
+  
   justify-content: flex-end;
   display: -webkit-flex;
 }
@@ -10404,9 +10319,7 @@ kbd {
   display: none;
   vertical-align: bottom;
 }
-/* ctb_show is added to the ctb_hideshow div to show the cell toolbar.
-   Cell toolbars are only shown when the ctb_global_show class is also set.
-*/
+
 .ctb_global_show .ctb_show.ctb_hideshow {
   display: block;
 }
@@ -11055,9 +10968,9 @@ div#pager {
   padding-top: 8px;
   -webkit-box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
-  /* Display over codemirror */
+  
   z-index: 100;
-  /* Hack which prevents jquery ui resizable from changing top. */
+  
   top: auto !important;
 }
 div#pager pre {
@@ -11090,8 +11003,7 @@ div#pager .ui-resizable-handle {
   background: #f7f7f7;
   border-top: 1px solid #cfcfcf;
   border-bottom: 1px solid #cfcfcf;
-  /* This injects handle bars (a short, wide = symbol) for 
-        the resize handle. */
+  
 }
 div#pager .ui-resizable-handle::after {
   content: '';
@@ -11104,7 +11016,7 @@ div#pager .ui-resizable-handle::after {
   border-top: 1px solid #cfcfcf;
 }
 .quickhelp {
-  /* Old browsers */
+  
   display: -webkit-box;
   -webkit-box-orient: horizontal;
   -webkit-box-align: stretch;
@@ -11114,7 +11026,7 @@ div#pager .ui-resizable-handle::after {
   display: box;
   box-orient: horizontal;
   box-align: stretch;
-  /* Modern browsers */
+  
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -11128,11 +11040,11 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_descr {
   display: inline-block;
-  /* Old browsers */
+  
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   box-flex: 1;
-  /* Modern browsers */
+  
   flex: 1;
 }
 span.save_widget {
@@ -11227,20 +11139,9 @@ li.pulse.open > a.dropdown-toggle {
   background-color: #F37626;
   color: white;
 }
-/**
- * Primary styles
- *
- * Author: Jupyter Development Team
- */
-/** WARNING IF YOU ARE EDITTING THIS FILE, if this is a .css file, It has a lot
- * of chance of beeing generated from the ../less/[samename].less file, you can
- * try to get back the less file by reverting somme commit in history
- **/
-/*
- * We'll try to get something pretty, so we
- * have some strange css to have the scroll bar on
- * the left with fix button on the top right of the tooltip
- */
+
+
+
 @-moz-keyframes fadeOut {
   from {
     opacity: 1;
@@ -11273,7 +11174,7 @@ li.pulse.open > a.dropdown-toggle {
     opacity: 1;
   }
 }
-/*properties of tooltip after "expand"*/
+
 .bigtooltip {
   overflow: auto;
   height: 200px;
@@ -11284,7 +11185,7 @@ li.pulse.open > a.dropdown-toggle {
   transition-property: height;
   transition-duration: 500ms;
 }
-/*properties of tooltip before "expand"*/
+
 .smalltooltip {
   -webkit-transition-property: height;
   -webkit-transition-duration: 500ms;
@@ -11303,12 +11204,12 @@ li.pulse.open > a.dropdown-toggle {
   right: 0px;
 }
 .tooltiptext {
-  /*avoid the button to overlap on some docstring*/
+  
   padding-right: 30px;
 }
 .ipython_tooltip {
   max-width: 700px;
-  /*fade-in animation when inserted*/
+  
   -webkit-animation: fadeOut 400ms;
   -moz-animation: fadeOut 400ms;
   animation: fadeOut 400ms;
@@ -11374,8 +11275,8 @@ ul.typeahead-list {
   overflow: auto;
 }
 ul.typeahead-list > li > a {
-  /** Firefox bug **/
-  /* see https://github.com/jupyter/notebook/issues/559 */
+  
+  
   white-space: normal;
 }
 .cmd-palette .modal-body {
@@ -11455,74 +11356,74 @@ ul.typeahead-list > li > a {
 .terminal-app #terminado-container {
   margin-top: 20px;
 }
-/*# sourceMappingURL=style.min.css.map */
+
 .highlight  { background: #f8f8f8; }
 .highlight .hll { background-color: #ffffcc }
-.highlight .c { color: #408080; font-style: italic } /* Comment */
-.highlight .err { border: 1px solid #FF0000 } /* Error */
-.highlight .k { color: #008000; font-weight: bold } /* Keyword */
-.highlight .o { color: #666666 } /* Operator */
-.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
-.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
-.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
-.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
-.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
-.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
-.highlight .gd { color: #A00000 } /* Generic.Deleted */
-.highlight .ge { font-style: italic } /* Generic.Emph */
-.highlight .gr { color: #FF0000 } /* Generic.Error */
-.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
-.highlight .gi { color: #00A000 } /* Generic.Inserted */
-.highlight .go { color: #888888 } /* Generic.Output */
-.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
-.highlight .gs { font-weight: bold } /* Generic.Strong */
-.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
-.highlight .gt { color: #0044DD } /* Generic.Traceback */
-.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
-.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
-.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
-.highlight .kp { color: #008000 } /* Keyword.Pseudo */
-.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
-.highlight .kt { color: #B00040 } /* Keyword.Type */
-.highlight .m { color: #666666 } /* Literal.Number */
-.highlight .s { color: #BA2121 } /* Literal.String */
-.highlight .na { color: #7D9029 } /* Name.Attribute */
-.highlight .nb { color: #008000 } /* Name.Builtin */
-.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
-.highlight .no { color: #880000 } /* Name.Constant */
-.highlight .nd { color: #AA22FF } /* Name.Decorator */
-.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
-.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
-.highlight .nf { color: #0000FF } /* Name.Function */
-.highlight .nl { color: #A0A000 } /* Name.Label */
-.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
-.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
-.highlight .nv { color: #19177C } /* Name.Variable */
-.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
-.highlight .w { color: #bbbbbb } /* Text.Whitespace */
-.highlight .mb { color: #666666 } /* Literal.Number.Bin */
-.highlight .mf { color: #666666 } /* Literal.Number.Float */
-.highlight .mh { color: #666666 } /* Literal.Number.Hex */
-.highlight .mi { color: #666666 } /* Literal.Number.Integer */
-.highlight .mo { color: #666666 } /* Literal.Number.Oct */
-.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
-.highlight .sc { color: #BA2121 } /* Literal.String.Char */
-.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
-.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
-.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
-.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
-.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
-.highlight .sx { color: #008000 } /* Literal.String.Other */
-.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
-.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
-.highlight .ss { color: #19177C } /* Literal.String.Symbol */
-.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .vc { color: #19177C } /* Name.Variable.Class */
-.highlight .vg { color: #19177C } /* Name.Variable.Global */
-.highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+.highlight .c { color: #408080; font-style: italic } 
+.highlight .err { border: 1px solid #FF0000 } 
+.highlight .k { color: #008000; font-weight: bold } 
+.highlight .o { color: #666666 } 
+.highlight .ch { color: #408080; font-style: italic } 
+.highlight .cm { color: #408080; font-style: italic } 
+.highlight .cp { color: #BC7A00 } 
+.highlight .cpf { color: #408080; font-style: italic } 
+.highlight .c1 { color: #408080; font-style: italic } 
+.highlight .cs { color: #408080; font-style: italic } 
+.highlight .gd { color: #A00000 } 
+.highlight .ge { font-style: italic } 
+.highlight .gr { color: #FF0000 } 
+.highlight .gh { color: #000080; font-weight: bold } 
+.highlight .gi { color: #00A000 } 
+.highlight .go { color: #888888 } 
+.highlight .gp { color: #000080; font-weight: bold } 
+.highlight .gs { font-weight: bold } 
+.highlight .gu { color: #800080; font-weight: bold } 
+.highlight .gt { color: #0044DD } 
+.highlight .kc { color: #008000; font-weight: bold } 
+.highlight .kd { color: #008000; font-weight: bold } 
+.highlight .kn { color: #008000; font-weight: bold } 
+.highlight .kp { color: #008000 } 
+.highlight .kr { color: #008000; font-weight: bold } 
+.highlight .kt { color: #B00040 } 
+.highlight .m { color: #666666 } 
+.highlight .s { color: #BA2121 } 
+.highlight .na { color: #7D9029 } 
+.highlight .nb { color: #008000 } 
+.highlight .nc { color: #0000FF; font-weight: bold } 
+.highlight .no { color: #880000 } 
+.highlight .nd { color: #AA22FF } 
+.highlight .ni { color: #999999; font-weight: bold } 
+.highlight .ne { color: #D2413A; font-weight: bold } 
+.highlight .nf { color: #0000FF } 
+.highlight .nl { color: #A0A000 } 
+.highlight .nn { color: #0000FF; font-weight: bold } 
+.highlight .nt { color: #008000; font-weight: bold } 
+.highlight .nv { color: #19177C } 
+.highlight .ow { color: #AA22FF; font-weight: bold } 
+.highlight .w { color: #bbbbbb } 
+.highlight .mb { color: #666666 } 
+.highlight .mf { color: #666666 } 
+.highlight .mh { color: #666666 } 
+.highlight .mi { color: #666666 } 
+.highlight .mo { color: #666666 } 
+.highlight .sb { color: #BA2121 } 
+.highlight .sc { color: #BA2121 } 
+.highlight .sd { color: #BA2121; font-style: italic } 
+.highlight .s2 { color: #BA2121 } 
+.highlight .se { color: #BB6622; font-weight: bold } 
+.highlight .sh { color: #BA2121 } 
+.highlight .si { color: #BB6688; font-weight: bold } 
+.highlight .sx { color: #008000 } 
+.highlight .sr { color: #BB6688 } 
+.highlight .s1 { color: #BA2121 } 
+.highlight .ss { color: #19177C } 
+.highlight .bp { color: #008000 } 
+.highlight .vc { color: #19177C } 
+.highlight .vg { color: #19177C } 
+.highlight .vi { color: #19177C } 
+.highlight .il { color: #666666 } 
     
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+
 .ansi-black-fg { color: #3E424D; }
 .ansi-black-bg { background-color: #3E424D; }
 .ansi-black-intense-fg { color: #282C36; }
@@ -11558,7 +11459,7 @@ ul.typeahead-list > li > a {
 
 .ansi-bold { font-weight: bold; }
 
-/* Overrides of notebook CSS for static HTML export */
+
 body {
   overflow: visible;
   padding: 8px;

@@ -2,4 +2,6 @@
 .pydevproject
 .settings
 .ipynb_checkpoints
+.README.md.html
 __pycache__
+out/tmp

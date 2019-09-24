@@ -1,12 +1,15 @@
-# nb2wp
+# nb2wp - Convert Jupyter Notebook to Wordpress.com HTML
 
-This little utility converts Jupyter notebook to HTML suitable for Wordpress.com. Note the difference between **Wordpress.com** service and Wordpress.org platform. The Wordpress.com service is a lot more strict, for example:
-- you cannot install arbitrary plugins on Wordpress.com.
-- your HTML will be heavily sanitized. No script execution. CSS support is very limited (there is some CSS support in the new Block editor). Your output will be converted to themed, and thus some display will be broken (for example dataframe table).
-- image with `data:` URI is not supported (the `data:` URI will be removed). This breaks all matplotlib graphics.
+This `np2wp` utility converts Jupyter notebooks to plain HTML suitable for Wordpress.com. Note the difference between **Wordpress.com** service and Wordpress.org platform. The Wordpress.com is much stricter.
 
-Therefore many existing solutions for displaying or converting notebook to Wordpress will not work:
-- solutions that require installing Wordpress plugin (such as nbconvert) will not work
-- solutions that puts raw HTML most likely will not work because of its dependencies to CSS and scripts.
+This utility does the following:
+- convert .ipynb to HTML using [nbconvert](https://nbconvert.readthedocs.io/en/latest/) using selected template (full, basic, or custom)
+- convert the CSS to inline style using [pynliner](https://pythonhosted.org/pynliner/) so that the style will be honoured by Wordpress. By default it replaces the CSS given by nbconvert with custom and simpler `style.css` that can be inlined by pynliner.
+- extract embedded images (such as ones produced by Matplotlib) and local images to `img` directory. You need to upload this `img` directory somewhere and provide URL prefix for the images.
+- convert Latex directives to Wordpress.com Latex directives.
 
-The only thing that works is to duplicate your notebook to Gist and embed the gist page in Wordpress.com. The output is not ideal though, since you only have your notebook inside a small frame, and also it requires you to duplicate your notebook in gist (there is a solution though to automate this gist-ing thing from your Jupyter). But overall, the user experience is not as good as reading a blog.
+Then you need to do some manual works:
+- copy-paste the HTML inside the `<body>` to Wordpress HTML editor
+- upload the image directory.
+
+Open the **[Readme.ipynb](Readme.ipynb)** for more info.
