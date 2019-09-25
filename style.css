@@ -1172,7 +1172,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: inherit;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -9415,7 +9415,7 @@ div.cell.selected.jupyter-soft-selected {
 }
 .prompt {
   /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
-  min-width: 14ex;
+  /* blp: min-width: 14ex; */
   /* This padding is tuned to match the padding on the CodeMirror editor. */
   padding: 0.4em;
   margin: 0px;
@@ -10284,13 +10284,14 @@ div#notebook_panel {
   height: 100%;
 }
 div#notebook {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
   overflow-y: hidden;
   overflow-x: auto;
   width: 100%;
   /* This spaces the page away from the edge of the notebook area */
-  padding-top: 20px;
+  padding-top: 0px; /* blp: was 20px */
   margin: 0px;
   outline: none;
   box-sizing: border-box;
@@ -10300,7 +10301,8 @@ div#notebook {
 }
 @media not print {
   #notebook-container {
-    padding: 15px;
+    /* blp padding: 15px; */
+    width: 100%; /* blp */
     background-color: #fff;
     min-height: 0;
     -webkit-box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);

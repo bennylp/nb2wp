@@ -10,6 +10,8 @@ import time
 from bs4 import BeautifulSoup
 from shutil import copyfile
 
+__version__ = '0.2'
+
 def nb2wp(nbfile, out_dir='', template='full', css_file='style.css', 
           save_img=True, img_dir='img', img_url_prefix='img', 
           latex='wp', remove_attrs=True, footer=True,
@@ -226,9 +228,10 @@ def nb2wp(nbfile, out_dir='', template='full', css_file='style.css',
 
     # Add footer
     if footer:
-        el = """<p align="center" style="font-size: 12px; color: #9d9999;">
-                    Wordpress conversion from Readme.ipynb by <A HREF="https://github.com/bennylp/nb2wp">nb2wp</A>
-                </p>"""
+        el = """<p align="center" style="font-size: 12px; color: #9d9999;">""" + \
+             """Wordpress conversion from {} by """.format(file) + \
+             """<A HREF="https://github.com/bennylp/nb2wp">nb2wp</A> v{}</p>\n""".format(__version__)
+
         end_body = re.search(r'</body>', html, re.I)
         if end_body is not None:
             html = html[:end_body.start()] + el + html[end_body.start():]
