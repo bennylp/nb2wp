@@ -10,9 +10,9 @@ import time
 from bs4 import BeautifulSoup
 from shutil import copyfile
 
-__version__ = '0.2'
+__version__ = '0.3'
 
-def nb2wp(nbfile, out_dir='', template='full', css_file='style.css', 
+def nb2wp(nbfile, out_dir='', template='full', css_files=['style.css'], 
           save_img=True, img_dir='img', img_url_prefix='img', 
           latex='wp', remove_attrs=True, footer=True,
           save_css=False, save_html=False, quiet=False):
@@ -26,8 +26,9 @@ def nb2wp(nbfile, out_dir='', template='full', css_file='style.css',
     template:   (Optional) nbconvert template file. The default is "full".  You
                 may specify standard nbconvert template names such as "full" or
                 "basic", or the path of custom nbconvert .TPL file.
-    css_file:   Specify CSS file. Default is 'style.css'. If not specified, the
-                CSS provided by nbconvert will be used.
+    css_files:  Specify list of CSS files  to use.  The files will be  appended
+                after one another. Default is  ['style.css'].  If not specified, 
+                the CSS provided by nbconvert will be used.
     save_img:   Save  inline images  to  external  image files.  Default:  True.
                 Setting this  to False  will cause failure in loading the image
                 because Wordpress.com disallows "data:" URI.
@@ -75,10 +76,12 @@ def nb2wp(nbfile, out_dir='', template='full', css_file='style.css',
     #
     # Preprocess CSS and HTML
     #
-    if css_file:
-        debug('Using CSS file {}'.format(css_file))
-        with open(css_file, 'r') as f:
-            css = f.read()
+    if css_files:
+        debug('Using CSS files {}'.format(css_files))
+        css = ''
+        for css_file in css_files:
+            with open(css_file, 'r') as f:
+                css += f.read()
     else:
         if res['inlining'] and res['inlining']['css']:
             css = '\n'.join(res['inlining']['css']) + '\n'
@@ -276,6 +279,6 @@ def test():
 if __name__ == '__main__':
     #test()
     #nb2wp('Readme.ipynb', out_dir='out/tmp',
-    #      css_file='style.css', save_css=True, remove_attrs=False, 
+    #      css_files=['style.css'], save_css=True, remove_attrs=False, 
     #      img_url_prefix='https://raw.githubusercontent.com/bennylp/nb2wp/master/out/demo2/img')
     pass
