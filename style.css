@@ -9565,15 +9565,16 @@ div.input {
 div.input_prompt {
   color: #303F9F;
   border-top: 1px solid transparent;
+  padding-top: 5pt; /* blp */
 }
 div.input_area > div.highlight {
-  margin: 0.4em;
+  margin: 0pt; /* blp: was 0.4em; */
   border: none;
   padding: 0px;
   background-color: transparent;
 }
 div.input_area > div.highlight > pre {
-  margin: 0px;
+  margin: 5pt; /* blp: was 0px */
   border: none;
   padding: 0px;
   background-color: transparent;

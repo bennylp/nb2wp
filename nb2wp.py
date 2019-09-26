@@ -10,7 +10,7 @@ import time
 from bs4 import BeautifulSoup
 from shutil import copyfile
 
-__version__ = '0.3'
+__version__ = '0.3.1'
 
 def nb2wp(nbfile, out_dir='', template='full', css_files=['style.css'], 
           save_img=True, img_dir='img', img_url_prefix='img', 
